@@ -1,0 +1,22 @@
+# torch CPU (léger) sur Linux/cloud — sans effet sur les autres paquets
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# Cœur scientifique
+numpy>=1.26
+scipy>=1.11
+pandas>=2.0
+
+# ML / PINN (CPU par défaut ; voir README pour CUDA)
+torch>=2.2
+
+# API
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.5
+
+# Dashboard
+streamlit>=1.33
+matplotlib>=3.8
+
+# Tests
+pytest>=8.0

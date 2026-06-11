@@ -1,0 +1,41 @@
+services:
+  api:
+    build: .
+    container_name: sante-api-v2
+    ports: ["8000:8000"]
+    environment:
+      - API_PORT=8000
+      - POPULATION=1000000
+      - STORAGE_BACKEND=sqlite
+      - DB_PATH=/app/data/platform.db
+    volumes:
+      - sante-data:/app/data
+    restart: unless-stopped
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/api/v1/monitoring/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+
+  dashboard:
+    build: .
+    container_name: sante-dashboard-v2
+    ports: ["8501:8501"]
+    environment:
+      - API_URL=http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+    command: streamlit run dashboard/app.py --server.address 0.0.0.0 --server.port 8501
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+
+volumes:
+  sante-data:

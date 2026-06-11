@@ -1,0 +1,10 @@
+{
+  "// Isolation": "Analyse uniquement CE projet ; ignore le projet voisin homonyme (v1).",
+  "python.analysis.extraPaths": ["."],
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.exclude": [
+    "../plateforme-decision-sante/**"
+  ],
+  "python.testing.pytestArgs": ["tests"],
+  "python.testing.pytestEnabled": true
+}

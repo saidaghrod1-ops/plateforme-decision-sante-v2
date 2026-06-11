@@ -1,0 +1,32 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.pytest_cache/
+
+# Poids/modèles : exclus par défaut, SAUF les artefacts légers versionnés
+# (poids HJB ~150 KB nécessaires au benchmark HJB-PINN en ligne).
+*.pt
+!artifacts/*.pt
+
+# Données : exclues par défaut, SAUF les CSV de démo (Maroc, légers).
+data/*
+!data/*.csv
+
+# Bases locales / runtime
+*.db
+*.db-wal
+*.db-shm
+
+# Documents lourds (hors code)
+*.pptx
+*.pdf
+*.docx
+*.zip
+
+.DS_Store
+Thumbs.db
+
+# Config Claude locale (propre a la machine)
+.claude/settings.local.json
