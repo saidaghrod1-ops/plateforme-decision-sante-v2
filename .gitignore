@@ -30,3 +30,17 @@ Thumbs.db
 
 # Config Claude locale (propre a la machine)
 .claude/settings.local.json
+
+# Hors livrable : outils locaux et generation de documents (gardes sur disque,
+# invisibles sur GitHub — le repo ne montre que la plateforme deployable).
+.claude/
+.vscode/
+run_local.ps1
+scripts/make_*.py
+scripts/merge_slides.py
+scripts/_pdf_assets/
+scripts/_report_assets/
+scripts/_slide_assets/
+scripts/_slides_assets/
+artifacts/hjb_value_maroc_seir_reconstruit.pt
+data/maroc_donnees_reelles.csv
